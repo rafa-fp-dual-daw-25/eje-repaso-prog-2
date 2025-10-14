@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -6,7 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        /*int dia, mes, ano;
+/*        int dia, mes, ano;
 
         do {
             System.out.println("Ingrese el día: ");
@@ -38,6 +37,17 @@ public class Main {
 
         System.out.println("Programa finalizado.");*/
 
+        int random = (int) (Math.random() * (108 - 56 + 1)) + 56;
+        System.out.println("Ingrese un numero impar mayor que 50: ");
+        int numUser = sc.nextInt();
+
+        if (numUser <= 50 || numUser % 2 == 0) {
+            System.out.println("Numero incorrecto.");
+        } else {
+            int resultado = numUser * random;
+            System.out.println("Tu número (" + numUser + ") * ? = " + resultado + ". Ahora adivina el multiplicador: ");
+        }
+        // CONTINUAR DESDE AQUI: https://chatgpt.com/c/68ed231d-10fc-832b-88f1-10687d9e6783
         sc.close();
     }
 
@@ -70,6 +80,8 @@ public class Main {
         return false;
     }
 
-    //escribir int num1; guardar num1;
-    //
+    public static boolean numeroRandom(int random) {
+        // CONTINUAR DESDE AQUI: https://chatgpt.com/c/68ed231d-10fc-832b-88f1-10687d9e6783
+        return false;
+    }
 }
