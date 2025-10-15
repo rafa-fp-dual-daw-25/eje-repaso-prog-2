@@ -1,11 +1,10 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-/*        int dia, mes, ano;
+        /*int dia, mes, ano;
 
         do {
             System.out.println("Ingrese el día: ");
@@ -37,21 +36,16 @@ public class Main {
 
         System.out.println("Programa finalizado.");*/
 
-        int random = (int) (Math.random() * (108 - 56 + 1)) + 56;
-        System.out.println("Ingrese un numero impar mayor que 50: ");
-        int numUser = sc.nextInt();
-
-        if (numUser <= 50 || numUser % 2 == 0) {
-            System.out.println("Numero incorrecto.");
+        int resultado = numeroRandom();
+        if (resultado != -1) {
+            System.out.println("Enhorabuena! " + resultado + " era el número correcto.");
         } else {
-            int resultado = numUser * random;
-            System.out.println("Tu número (" + numUser + ") * ? = " + resultado + ". Ahora adivina el multiplicador: ");
+            System.out.println("Máximo de 3 intentos alcanzado.");
         }
-        // CONTINUAR DESDE AQUI: https://chatgpt.com/c/68ed231d-10fc-832b-88f1-10687d9e6783
-        sc.close();
+
     }
 
-    public static boolean esFechaValida(int dia, int mes, int ano) {
+    /*public static boolean esFechaValida(int dia, int mes, int ano) {
         if (ano >= 1 && mes >= 1 && mes <= 12 && dia >= 1) {
             switch (mes) {
                 case 1, 3, 5, 7, 8, 10, 12:
@@ -71,17 +65,46 @@ public class Main {
             }
         }
         return false;
-    }
+    }*/
 
-    public static boolean esPrimo(int num) {
+    /*public static boolean esPrimo(int num) {
         for (int i = 2; i <= num; i++) {
             return num % i != 0;
         }
         return false;
-    }
+    }*/
 
-    public static boolean numeroRandom(int random) {
-        // CONTINUAR DESDE AQUI: https://chatgpt.com/c/68ed231d-10fc-832b-88f1-10687d9e6783
-        return false;
+    public static int numeroRandom() {
+        Scanner sc = new Scanner(System.in);
+
+        int random = (int) (Math.random() * (108 - 56 + 1)) + 56;
+        int numUser;
+        int resultado;
+        int numX;
+        int intentos = 0;
+        boolean acierto = false;
+
+        do {
+            System.out.println("Ingrese un numero impar mayor que 50: ");
+            numUser = sc.nextInt();
+        } while (numUser <= 50 || numUser % 2 == 0);
+
+        resultado = numUser * random;
+
+        while (intentos < 3 && !acierto) {
+            System.out.println(numUser + " * ( X ) = " + resultado);
+            System.out.print("Adivina el número (X): ");
+            numX = sc.nextInt();
+            intentos++;
+
+            if (numX == random) {
+                acierto = true;
+            } else if (intentos < 3) {
+                System.out.println("Incorrecto. Intenta de nuevo.");
+            }
+        }
+
+        sc.close();
+        return acierto ? random : -1;
     }
 }
